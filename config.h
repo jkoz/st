@@ -5,10 +5,9 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-//static char font[] = "Source Code Pro:size=13:antialias=true";
 static char font[] = "Cousine:size=13:antialias=true";
 static int borderpx = 2;
-static char shell[] = "/usr/bin/zsh";
+static char shell[] = "/bin/sh";
 static char *utmp = NULL;
 
 /* identification sequence returned in DA and DECID */
@@ -53,44 +52,52 @@ static char termname[] = "st-256color";
 
 static unsigned int tabspaces = 8;
 
+/* bg opacity */
+static const int alpha = 0xaa;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* solarized dark */
-//   "#073642",  /*  0: black    */
-//   "#dc322f",  /*  1: red      */
-//   "#859900",  /*  2: green    */
-//   "#b58900",  /*  3: yellow   */
-//   "#268bd2",  /*  4: blue     */
-//   "#d33682",  /*  5: magenta  */
-//   "#2aa198",  /*  6: cyan     */
-//   "#eee8d5",  /*  7: white    */
-//   "#002b36",  /*  8: brblack  */
-//   "#cb4b16",  /*  9: brred    */
-//   "#586e75",  /* 10: brgreen  */
-//   "#657b83",  /* 11: bryellow */
-//   "#839496",  /* 12: brblue   */
-//   "#6c71c4",  /* 13: brmagenta*/
-//   "#93a1a1",  /* 14: brcyan   */
-//   "#fdf6e3",  /* 15: brwhite  */
+	/* 8 normal colors */
+	//"black",
+	//"red3",
+	//"green3",
+	//"yellow3",
+	//"blue2",
+	//"magenta3",
+	//"cyan3",
+	//"gray90",
 
-    /* solarized light */
-	"#eee8d5",
-	"#dc322f",
-	"#859900",
-	"#b58900",
-	"#268bd2",
-	"#d33682",
-	"#2aa198",
-	"#073642",
-	"#fdf6e3",
-	"#cb4b16",
-	"#93a1a1",
-	"#839496",
-	"#2B3031",
-	"#6c71c4",
-	"#586e75",
-	"#002b36",
+	/* 8 bright colors */
+	//"gray50",
+	//"red",
+	//"green",
+	//"yellow",
+	//"#5c5cff",
+	//"magenta",
+	//"cyan",
+	//"white",
+   "#073642",  /*  0: black    */
+   "#dc322f",  /*  1: red      */
+   "#859900",  /*  2: green    */
+   "#b58900",  /*  3: yellow   */
+   "#268bd2",  /*  4: blue     */
+   "#d33682",  /*  5: magenta  */
+   "#2aa198",  /*  6: cyan     */
+   "#eee8d5",  /*  7: white    */
+   "#002b36",  /*  8: brblack  */
+   "#cb4b16",  /*  9: brred    */
+   "#586e75",  /* 10: brgreen  */
+   "#657b83",  /* 11: bryellow */
+   "#839496",  /* 12: brblue   */
+   "#6c71c4",  /* 13: brmagenta*/
+   "#93a1a1",  /* 14: brcyan   */
+   "#fdf6e3",  /* 15: brwhite  */
+
+	[255] = 0,
+
+	/* more colors can be added after 255 to use with DefaultXX */
+	"#cccccc",
+	"#000000",
 };
 
 
@@ -98,9 +105,9 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor
  */
-static unsigned int defaultfg = 12;
-static unsigned int defaultbg = 8;
-static unsigned int defaultcs = 14;
+static unsigned int defaultfg = 7;
+static unsigned int defaultbg = 257;
+static unsigned int defaultcs = 256;
 
 /*
  * Colors used, when the specific fg == defaultfg. So in reverse mode this
